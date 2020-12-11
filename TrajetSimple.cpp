@@ -21,7 +21,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple(const char *Start, const char *Goal, 
+TrajetSimple::TrajetSimple(const char *Start, const char *Goal,
                            const char *Means) : Trajet(Start, Goal)
 // Algorithme :
 //
@@ -30,7 +30,7 @@ TrajetSimple::TrajetSimple(const char *Start, const char *Goal,
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
     moyen = new char[strlen(Means) + 1];
-	strcpy(moyen, Means);
+    strcpy(moyen, Means);
 } //----- Fin de TrajetSimple
 
 TrajetSimple::~TrajetSimple()
@@ -46,8 +46,6 @@ TrajetSimple::~TrajetSimple()
 //----------------------------------------------------- Méthodes publiques
 void TrajetSimple::Afficher() const
 {
-	cout << "Trajet de " << getDepart() << " à " << getArrivee() 
-            << " en " << moyen << " " << endl;
+  cout << "Trajet de " << getDepart() << " à " << getArrivee() 
+       << " en " << moyen << " " << endl;
 }
-
-

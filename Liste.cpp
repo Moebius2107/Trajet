@@ -15,6 +15,8 @@ using namespace std;
 
 Liste::Liste() : size(0) {}
 
+//Liste::Liste() :
+
 Liste::~Liste()
 {
     while (!Empty())
@@ -48,7 +50,7 @@ void Liste::pushBack(const Trajet *unTrajet, const bool ordre)
     } else if (premiere == derniere) {
         premiere->setSuivant(new Etape(unTrajet));
         premiere->getSuivant()->setPrecedent(premiere);
-        derniere = premiere->getSuivant(); 
+        derniere = premiere->getSuivant();
     } else {
         derniere->setSuivant(new Etape(unTrajet));
         derniere->getSuivant()->setPrecedent(derniere);
@@ -64,7 +66,7 @@ void Liste::pushBack(const Trajet *unTrajet, const bool ordre)
 // Remove the trajet from the beginning of the list
 void Liste::pop_front( )
 {
-    if (Empty()) 
+    if (Empty())
         return;
     Etape *tmpEtape = premiere;
     premiere = premiere->getSuivant();
@@ -119,5 +121,3 @@ void Liste::remove(const Etape *uneEtape) {
                 ->setPrecedent(uneEtape->getPrecedent());
     }
 }
-
-

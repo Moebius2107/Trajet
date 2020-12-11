@@ -8,75 +8,79 @@ using namespace std;
 #include "TrajetCompose.h"
 #include "Etape.h"
 #include "Liste.h"
-#include "main.h"
+
+void ajouterUnTrajet(Catalogue *UneCatalogue);
+
+void afficherLeCatalogue(Catalogue *UneCatalogue);
+
+void rechercherUnParcours(Catalogue *UneCatalogue);
+
+void rechercherAvanceeUnParcours(Catalogue *UneCatalogue);
 
 int main()
 {
 
-	//Catalogue *catalogue = new Catalogue;
+	// TrajetSimple ts1("paris", "lyon", "avion");
 
-	TrajetSimple *ts1 = new TrajetSimple("paris", "berlin", "avion");
+	// ts1.Afficher();
 
-	TrajetSimple *ts2 = ts1;
+	// TrajetSimple ts2 = ts1;
 
-	cout << ts1 << " " << ts2 << endl;
+	// ts2.Afficher();
+	Catalogue *catalogue = new Catalogue;
 
-	ts2 = new TrajetSimple("hehe", "hihi", "dsds");
-	
-	cout << ts1 << " " << ts2 << endl;
+	while (1)
+	{
+		cout << '\n';
+		cout << "|************************************************************|\n";
+		cout << "| 1 - Ajouter un trajet                                      |\n";
+		cout << "| 2 - Afficher le catalogue                                  |\n";
+		cout << "| 3 - Rechercher un parcours                                 |\n";
+		cout << "| 4 - Rechercher un parcours (avancée)                       |\n";
+		cout << "| 5 - Quitter l'application                                  |\n";
+		cout << "Tapez le numéro correspondant à l'action de votre choix : ";
 
-	// while (1)
-	// {
-	// 	cout << '\n';
-	// 	cout << "|************************************************************|\n";
-	// 	cout << "| 1 - Ajouter un trajet                                      |\n";
-	// 	cout << "| 2 - Afficher le catalogue                                  |\n";
-	// 	cout << "| 3 - Rechercher un parcours                                 |\n";
-	// 	cout << "| 4 - Rechercher un parcours (avancée)                       |\n";
-	// 	cout << "| 5 - Quitter l'application                                  |\n";
-	// 	cout << "Tapez le numéro correspondant à l'action de votre choix : ";
+		char option;
+		cin >> option;
 
-	// 	char option;
-	// 	cin >> option;
-
-	// 	if (option == '1') {
-	// 		ajouterUnTrajet(catalogue);
-	// 	}
-	// 	else if (option == '2') {
-	// 		afficherLeCatalogue(catalogue);
-	// 	}
-	// 	else if (option == '3')
-	// 	{
-	// 		rechercherUnParcours(catalogue);
-	// 	}
-	// 	else if (option == '4')
-	// 	{
-	// 		rechercherAvanceeUnParcours(catalogue);
-	// 	}
-	// 	else if (option == '5')
-	// 	{
-	// 		cout << "Toutes les donnees seront perdues. \n"
-	//			 << "Avez-vous encore besoin de quitter ce programme? (Y/N) ";
-	// 		char x; cin >> x;
-	// 		if (x == 'Y' || x == 'y')
-	// 		{
-	// 			cout << "BYE\n";
-	// 			break;
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		cout << "Choix invalide. Entre 1 et 5, svp...";
-	// 	}
-	// }
-	// cout << "\n";
+		if (option == '1') {
+			ajouterUnTrajet(catalogue);
+		}
+		else if (option == '2') {
+			afficherLeCatalogue(catalogue);
+		}
+		else if (option == '3')
+		{
+			rechercherUnParcours(catalogue);
+		}
+		else if (option == '4')
+		{
+			rechercherAvanceeUnParcours(catalogue);
+		}
+		else if (option == '5')
+		{
+			cout << "Toutes les donnees seront perdues. \n"
+				 << "Avez-vous encore besoin de quitter ce programme? (Y/N) ";
+			char x; cin >> x;
+			if (x == 'Y' || x == 'y')
+			{
+				cout << "BYE\n";
+				break;
+			}
+		}
+		else
+		{
+			cout << "Choix invalide. Entre 1 et 5, svp...";
+		}
+	}
+	cout << "\n";
 
 	return 0;
 }
 
 void ajouterUnTrajet(Catalogue *UneCatalogue)
 {
-	cout << "Entrez le nombre d'étapes que comporte le trajet, \n"
+	cout << "Entrez le nombre d'étapes que comporte le trajet, "
 		 << "1 si c'est un trajet direct : ";
 	int N;
 	cin >> N;
@@ -112,9 +116,10 @@ void ajouterUnTrajet(Catalogue *UneCatalogue)
 
 			const TrajetSimple *trajet_simple = new TrajetSimple(villeDepart, villeSuivant, transport);
 			ListeDeTrajets->pushBack(trajet_simple, 1);
-			
-			villeDepart = new char[strlen(villeSuivant) + 1];
-			strcpy(villeDepart, villeSuivant);
+ 
+			//villeDepart = new char[strlen(villeSuivant) + 1];
+			//strcpy(villeDepart, villeSuivant);
+			*villeDepart = *villeSuivant;
 		}
 
 		UneCatalogue->AjouterTrajetCompose(ListeDeTrajets);

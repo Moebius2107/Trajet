@@ -59,18 +59,12 @@ int main()
 		}
 		else if (option == '5')
 		{
-			cout << "Toutes les donnees seront perdues. \n"
-				 << "Avez-vous encore besoin de quitter ce programme? (Y/N) ";
-			char x; cin >> x;
-			if (x == 'Y' || x == 'y')
-			{
-				cout << "BYE\n";
-				break;
-			}
+
+			break;
 		}
 		else
 		{
-			cout << "Choix invalide. Entre 1 et 5, svp...";
+			cout << "Choix invalide. Veuillez taper un chiffre entre 1 et 5 : ";
 		}
 	}
 	cout << "\n";
@@ -89,11 +83,11 @@ void ajouterUnTrajet(Catalogue *UneCatalogue)
 	char *villeSuivant = new char[100];
 	char *transport = new char[100];
 
-	cout << "Ville de depart : ";
+	cout << "Ville de départ : ";
 	cin >> villeDepart;
 
 	if (N == 1) {
-		cout << "Ville d'arrivee : ";
+		cout << "Ville d'arrivée : ";
 		cin >> villeSuivant;
 
 		cout << "Moyen de transport : ";
@@ -107,7 +101,7 @@ void ajouterUnTrajet(Catalogue *UneCatalogue)
 			if (i < N) {
 				cout << "Ville suivante : ";
 			} else {
-				cout << "Ville d'arrivee : ";
+				cout << "Ville d'arrivée : ";
 			}
 			cin >> villeSuivant;
 
@@ -134,9 +128,9 @@ void rechercherUnParcours(Catalogue *UneCatalogue) {
 	char *villeDepart = new char[100];
 	char *villeArrivee = new char[100];
 
-	cout << "Ville de depart : ";
+	cout << "Ville de départ : ";
 	cin >> villeDepart;
-	cout << "Ville d'arrivee : ";
+	cout << "Ville d'arrivée : ";
 	cin >> villeArrivee;
 
 	UneCatalogue->RechercheSimple(villeDepart, villeArrivee);
@@ -146,9 +140,9 @@ void rechercherAvanceeUnParcours(Catalogue *UneCatalogue) {
 	char *villeDepart = new char[100];
 	char *villeArrivee = new char[100];
 
-	cout << "Ville de depart : ";
+	cout << "Ville de départ : ";
 	cin >> villeDepart;
-	cout << "Ville d'arrivee : ";
+	cout << "Ville d'arrivée : ";
 	cin >> villeArrivee;
 
 	UneCatalogue->RechercheAvancee(villeDepart, villeArrivee);

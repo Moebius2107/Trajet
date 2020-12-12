@@ -27,7 +27,7 @@ void Liste::Afficher() const
 {
 	const Etape *x = premiere;
     if (x == NULL) {
-        cout << "Desole. Il y a rien pour afficher.\n";
+        cout << "There is nothing in the list."<<endl;
     } else {
         int i = 1;
         while (x != NULL) {

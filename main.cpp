@@ -31,14 +31,15 @@ int main()
 
 	while (1)
 	{
-		cout << '\n';
-		cout << "|************************************************************|\n";
-		cout << "| 1 - Ajouter un trajet                                      |\n";
-		cout << "| 2 - Afficher le catalogue                                  |\n";
-		cout << "| 3 - Rechercher un parcours                                 |\n";
-		cout << "| 4 - Rechercher un parcours (avancée)                       |\n";
-		cout << "| 5 - Quitter l'application                                  |\n";
-		cout << "Tapez le numéro correspondant à l'action de votre choix : ";
+
+		cout << endl;
+		cout << "|******************************************" << endl;
+		cout << "| 1 - Add a path							" << endl;		                                      
+		cout << "| 2 - Display the catalog					" << endl;
+		cout << "| 3 - Search for a course					" << endl;										
+		cout << "| 4 - Search for a course (advanced mode)	" << endl;						
+		cout << "| 5 - Exit									" << endl;														
+		cout << "Enter the corresponding number : ";
 
 		char option;
 		cin >> option;
@@ -47,11 +48,21 @@ int main()
 			ajouterUnTrajet(catalogue);
 		}
 		else if (option == '2') {
-			afficherLeCatalogue(catalogue);
+			catalogue->Afficher();//afficherLeCatalogue(catalogue);
 		}
 		else if (option == '3')
 		{
-			rechercherUnParcours(catalogue);
+			
+			char *villeDepart = new char[100];
+			char *villeArrivee = new char[100];
+
+			cout << "From : ";
+			cin >> villeDepart;
+			cout << "To : ";
+			cin >> villeArrivee;
+
+			catalogue->RechercheSimple(villeDepart, villeArrivee);
+			//rechercherUnParcours(catalogue);
 		}
 		else if (option == '4')
 		{
@@ -59,12 +70,11 @@ int main()
 		}
 		else if (option == '5')
 		{
-
 			break;
 		}
 		else
 		{
-			cout << "Choix invalide. Veuillez taper un chiffre entre 1 et 5 : ";
+			cout << "Invalid choice. Please enter a number between 1 and 5 ! ";
 		}
 	}
 	cout << "\n";
@@ -74,8 +84,8 @@ int main()
 
 void ajouterUnTrajet(Catalogue *UneCatalogue)
 {
-	cout << "Entrez le nombre d'étapes que comporte le trajet, "
-		 << "1 si c'est un trajet direct : ";
+	cout << "Enter the number of steps on the route, "
+		 << "1 if it's a direct route : ";
 	int N;
 	cin >> N;
 
@@ -83,14 +93,14 @@ void ajouterUnTrajet(Catalogue *UneCatalogue)
 	char *villeSuivant = new char[100];
 	char *transport = new char[100];
 
-	cout << "Ville de départ : ";
+	cout << "From : ";
 	cin >> villeDepart;
 
 	if (N == 1) {
-		cout << "Ville d'arrivée : ";
+		cout << "To : ";
 		cin >> villeSuivant;
 
-		cout << "Moyen de transport : ";
+		cout << "By : ";
 		cin >> transport;
 
 		UneCatalogue->AjouterTrajetSimple(villeDepart, villeSuivant, transport);
@@ -99,13 +109,13 @@ void ajouterUnTrajet(Catalogue *UneCatalogue)
 
 		for (int i = 1; i <= N; i++) {
 			if (i < N) {
-				cout << "Ville suivante : ";
+				cout << "Next : ";
 			} else {
-				cout << "Ville d'arrivée : ";
+				cout << "To : ";
 			}
 			cin >> villeSuivant;
 
-			cout << "Moyen de transport : ";
+			cout << "By : ";
 			cin >> transport;
 
 			const TrajetSimple *trajet_simple = new TrajetSimple(villeDepart, villeSuivant, transport);
@@ -128,9 +138,9 @@ void rechercherUnParcours(Catalogue *UneCatalogue) {
 	char *villeDepart = new char[100];
 	char *villeArrivee = new char[100];
 
-	cout << "Ville de départ : ";
+	cout << "From : ";
 	cin >> villeDepart;
-	cout << "Ville d'arrivée : ";
+	cout << "To : ";
 	cin >> villeArrivee;
 
 	UneCatalogue->RechercheSimple(villeDepart, villeArrivee);
@@ -140,9 +150,9 @@ void rechercherAvanceeUnParcours(Catalogue *UneCatalogue) {
 	char *villeDepart = new char[100];
 	char *villeArrivee = new char[100];
 
-	cout << "Ville de départ : ";
+	cout << "From : ";
 	cin >> villeDepart;
-	cout << "Ville d'arrivée : ";
+	cout << "To : ";
 	cin >> villeArrivee;
 
 	UneCatalogue->RechercheAvancee(villeDepart, villeArrivee);
